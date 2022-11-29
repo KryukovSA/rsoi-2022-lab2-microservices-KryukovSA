@@ -21,4 +21,26 @@ public class RatingService {
         }
         return rating.getStars();
     }
+
+    public void decreaseRating(String username, Boolean expired, Boolean badCondition) {
+        Rating rating = ratingRepository.findByUsername(username);
+        Integer stars = rating.getStars();
+        if(expired == true)
+            stars -= 10;
+        if(badCondition == true)
+            stars -= 10;
+        if(stars <= 0)
+            stars = 1;
+        rating.setStars(stars);
+        ratingRepository.save(rating);
+    }
+
+    public void increaseRating(String username) {
+        Rating rating = ratingRepository.findByUsername(username);
+        Integer stars = rating.getStars() + 1;
+        if (stars > 100)
+            stars = 100;
+        rating.setStars(stars);
+        ratingRepository.save(rating);
+    }
 }
