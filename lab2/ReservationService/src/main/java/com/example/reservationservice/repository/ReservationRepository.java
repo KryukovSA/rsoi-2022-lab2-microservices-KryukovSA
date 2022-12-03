@@ -12,6 +12,6 @@ import java.util.UUID;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-    Rating findByReservation_uid(UUID uuid);
+    Reservation findByReservation_uid(UUID uuid);
     List<Reservation> findAllByUsernameAndStatusIn(String username, Set<Status> statuses);
 }

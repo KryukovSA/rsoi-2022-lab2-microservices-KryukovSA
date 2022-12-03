@@ -22,12 +22,12 @@ public class LibraryService {
 
 
 
-    public List<Library> getCityLibs(String city) {
+    public List<Library> getCityLibraries(String city) {
         List<Library> libraries = libraryRepository.findAllByCity(city);
         return libraries;
     }
 
-    public List<Books> getLibBooks(UUID libraryUUID, Boolean showAll) {
+    public List<Books> getLibraryBooks(UUID libraryUUID, Boolean showAll) {
         Library library = libraryRepository.findByLibrary_uid(libraryUUID);
         List<Library_books> library_books = library_booksRepository.findAllByLibrary_id(library.getId());
         List<Books> books = new ArrayList<Books>();
@@ -39,7 +39,7 @@ public class LibraryService {
     }
 
 
-    public  Library getLibInfo(UUID uuid) {
+    public  Library getLibraryInfo(UUID uuid) {
         return libraryRepository.findByLibrary_uid(uuid);
     }
 

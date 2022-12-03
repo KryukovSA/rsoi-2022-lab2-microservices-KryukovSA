@@ -17,7 +17,7 @@ public class RatingController {
     }
 
     @PostMapping("/decrease")
-    public ResponseEntity decreaseUserRating(@RequestParam("username") String username,
+    public ResponseEntity<?> decreaseUserRating(@RequestParam("username") String username,
                                                 @RequestParam("expired") Boolean expired,
                                                 @RequestParam("badCondition") Boolean badCondition) {
         ratingService.decreaseRating(username, expired, badCondition);
@@ -25,7 +25,7 @@ public class RatingController {
     }
 
     @PostMapping("/increase")
-    public ResponseEntity increaseUserRating(@RequestParam("username") String username) {
+    public ResponseEntity<?> increaseUserRating(@RequestParam("username") String username) {
         ratingService.increaseRating(username);
         return ResponseEntity.noContent().build();
     }
