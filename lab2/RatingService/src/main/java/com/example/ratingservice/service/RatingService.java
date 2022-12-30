@@ -3,7 +3,6 @@ package com.example.ratingservice.service;
 import com.example.ratingservice.model.Rating;
 import com.example.ratingservice.repository.RatingRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor

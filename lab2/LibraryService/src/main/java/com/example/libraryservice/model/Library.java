@@ -22,7 +22,7 @@ public class Library {
     private Integer id;
 
     @NotNull
-    private UUID library_uid;
+    private UUID libraryUid;
 
     @Column(length = 80)
     @NotNull

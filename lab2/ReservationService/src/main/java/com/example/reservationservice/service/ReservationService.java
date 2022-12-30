@@ -1,9 +1,12 @@
 package com.example.reservationservice.service;
 
+import com.example.requests.requests.ReturnBook;
+import com.example.requests.requests.TakeBook;
 import com.example.reservationservice.model.Reservation;
 import com.example.reservationservice.model.Status;
 import com.example.reservationservice.repository.ReservationRepository;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,23 +22,23 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
 
     //вернутть унигу
-    public ResponseEntity<?> returnBook(String username, UUID reservationUid, Date date, String condition) {
-        Reservation reservation = reservationRepository.findByReservation_uid(reservationUid);
+    public ResponseEntity<?> returnBook(String username, UUID reservationUid, ReturnBook returnBookRequest) {
+        Reservation reservation = reservationRepository.findByReservationUid(reservationUid);
         RestTemplate restTemplate = new RestTemplate();
         if(reservation == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No reservation found for " + reservationUid.toString());
         Boolean expired = false, badCondition = false;
-        if (reservation.getStart_date().after(reservation.getTill_date())) {
+        if (returnBookRequest.getDate().after(reservation.getTillDate())) {
             reservation.setStatus(Status.EXPIRED);
             expired = true;
         } else {
             reservation.setStatus(Status.RETURNED);
         }
-        if(!condition.equals("EXCELLENT")) badCondition = true;
-        String url;
+        if(!returnBookRequest.getCondition().equals("EXCELLENT")) badCondition = true;
+        String url = "";
         if(expired || badCondition) {
-            url = "http://gateway:8080/api/v1/rating" + "/decrease" + "?username=" + username + "&expired=" + expired + "&badCondition=" + badCondition;
+            url = "http://localhost:8080/api/v1/rating" + "/decrease" + "?username=" + username + "&expired=" + expired + "&badCondition=" + badCondition;
         } else {
-            url = "http://gateway:8080/api/v1/rating" + "/increase" + "?username=" + username;
+            url = "http://localhost:8080/api/v1/rating" + "/increase" + "?username=" + username;
         }
         restTemplate.postForLocation(url, null);
         //ToDo increase available_count
@@ -44,14 +47,14 @@ public class ReservationService {
     }
 
     // взять книгу
-    public ResponseEntity<Reservation> takeBook(String username, UUID bookUid, UUID libraryUid, Date tillDate) {
+    public ResponseEntity<Reservation> takeBook(String username, TakeBook takeBookRequest) {
 
         Reservation reservation = new Reservation();
-        reservation.setReservation_uid(randomUUID());
-        reservation.setBook_uid(bookUid);
-        reservation.setLibrary_uid(libraryUid);
-        reservation.setStart_date(new Date());
-        reservation.setTill_date(tillDate);
+        reservation.setReservationUid(randomUUID());
+        reservation.setBookUid(takeBookRequest.getBookUid());
+        reservation.setLibraryUid(takeBookRequest.getLibraryUid());
+        reservation.setStartDate(new Date());
+        reservation.setTillDate(takeBookRequest.getTillDate());
         reservation.setUsername(username);
         reservation.setStatus(Status.RENTED);
         reservation = reservationRepository.save(reservation);

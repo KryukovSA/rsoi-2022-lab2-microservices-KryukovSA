@@ -4,21 +4,22 @@ import com.example.libraryservice.model.Books;
 import com.example.libraryservice.model.Library;
 import com.example.libraryservice.model.Library_books;
 import com.example.libraryservice.repository.BooksRepository;
+import com.example.libraryservice.repository.LibraryBooksRepository;
 import com.example.libraryservice.repository.LibraryRepository;
-import com.example.libraryservice.repository.Library_booksRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@AllArgsConstructor
+
+@RequiredArgsConstructor
 @Service
 public class LibraryService {
     private final LibraryRepository libraryRepository;
     private final BooksRepository booksRepository;
-    private final Library_booksRepository library_booksRepository;
+    private final LibraryBooksRepository library_booksRepository;
 
 
 
@@ -26,13 +27,13 @@ public class LibraryService {
         List<Library> libraries = libraryRepository.findAllByCity(city);
         return libraries;
     }
-
+//UUID.fromString(String.valueOf(libraryUid))
     public List<Books> getLibraryBooks(UUID libraryUUID, Boolean showAll) {
-        Library library = libraryRepository.findByLibrary_uid(libraryUUID);
-        List<Library_books> library_books = library_booksRepository.findAllByLibrary_id(library.getId());
+        Library library = libraryRepository.findByLibraryUid(libraryUUID);
+        List<Library_books> library_books = library_booksRepository.findAllByLibraryId(library.getId());
         List<Books> books = new ArrayList<Books>();
         for (Library_books i: library_books) {
-            int id = i.getBook_id();
+            int id = i.getBookId();
             books.add(booksRepository.findById(id));
         }
         return books;
@@ -40,18 +41,18 @@ public class LibraryService {
 
 
     public  Library getLibraryInfo(UUID uuid) {
-        return libraryRepository.findByLibrary_uid(uuid);
+        return libraryRepository.findByLibraryUid(uuid);
     }
 
 
     public Books getBookInfo(UUID libraryUuid, UUID bookUuid) {
-        Library library = libraryRepository.findByLibrary_uid(libraryUuid);
-        Books books = booksRepository.findByBook_uid(bookUuid);
+        Library library = libraryRepository.findByLibraryUid(libraryUuid);
+        Books books = booksRepository.findByBookUid(bookUuid);
 
         List<Books> listBooks = new ArrayList<Books>();
-        List<Library_books> library_books = library_booksRepository.findAllByLibrary_id(library.getId());
+        List<Library_books> library_books = library_booksRepository.findAllByLibraryId(library.getId());
         for (Library_books i: library_books) {
-            int id = i.getBook_id();
+            int id = i.getBookId();
             listBooks.add(booksRepository.findById(id));
         }
 

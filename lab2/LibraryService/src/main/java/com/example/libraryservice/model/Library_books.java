@@ -1,10 +1,11 @@
 package com.example.libraryservice.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,12 +20,12 @@ public class Library_books {
     private Integer id;
 
     @Column(columnDefinition = "INT REFERENCES books (id)")
-    private Integer  book_id;
+    private Integer bookId;
 
     @Column(columnDefinition = "INT REFERENCES library (id)")
-    private Integer  library_id;
+    private Integer libraryId;
 
     @NotNull
-    private  Integer available_count;
+    private  Integer availableCount;
 
 }

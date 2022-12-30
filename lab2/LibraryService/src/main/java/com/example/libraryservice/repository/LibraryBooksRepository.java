@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface Library_booksRepository extends JpaRepository<Library_books, Integer> {
-    List<Library_books> findAllByLibrary_id(Integer library_id);
+public interface LibraryBooksRepository extends JpaRepository<Library_books, Integer> {
+    List<Library_books> findAllByLibraryId(Integer library_id);
 }

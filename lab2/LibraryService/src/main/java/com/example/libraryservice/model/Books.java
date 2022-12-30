@@ -20,7 +20,7 @@ public class Books {
     private Integer id;
 
     @NotNull
-    private UUID book_uid;
+    private UUID bookUid;
 
     @Column
     @NotNull

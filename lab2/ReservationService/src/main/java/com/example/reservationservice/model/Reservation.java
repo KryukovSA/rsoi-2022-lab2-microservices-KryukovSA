@@ -21,17 +21,17 @@ public class Reservation {
     private Integer id;
 
     @NotNull
-    private UUID reservation_uid;
+    private UUID reservationUid;
 
     @Column(length = 80)
     @NotNull
     private String username;
 
     @NotNull
-    private UUID book_uid;
+    private UUID bookUid;
 
     @NotNull
-    private UUID library_uid;
+    private UUID libraryUid;
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(20) NOT NULL CHECK (status IN ('RENTED', 'RETURNED', 'EXPIRED'))")
@@ -39,9 +39,11 @@ public class Reservation {
     private Status status;
 
     @NotNull
-    private Date start_date;
+    private Date startDate;
 
     @NotNull
-    private Date till_date;
+    private Date tillDate;
 
+    public Reservation(Reservation reservation) {
+    }
 }

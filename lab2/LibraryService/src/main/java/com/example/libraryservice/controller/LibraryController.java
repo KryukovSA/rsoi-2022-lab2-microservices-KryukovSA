@@ -22,8 +22,33 @@ public class LibraryController {
         return ResponseEntity.ok(libraryService.getBookInfo(libraryUid, bookUid));
     }
 
+    @GetMapping("/getBook")
+    public ResponseEntity<Books> getBookInfo1(@RequestParam("libraryUid") UUID libraryUid,
+                                              @RequestParam("bookUid") UUID bookUid) {
+        return ResponseEntity.ok(libraryService.getBookInfo(libraryUid, bookUid));
+    }
+
     @GetMapping(value = "{libraryUid}/info")
     public ResponseEntity<Library> getLibInfo(@PathVariable("libraryUid") UUID libraryUid) {
         return ResponseEntity.ok(libraryService.getLibraryInfo(libraryUid));
     }
+
+    @GetMapping("/getLib")
+    public ResponseEntity<Library> getLibInfo1(@RequestParam("libraryUid") UUID libraryUid) {
+        return ResponseEntity.ok(libraryService.getLibraryInfo(libraryUid));
+    }
+
+    @GetMapping(value = "")
+    public ResponseEntity<List<Library>> getLibsInCity(@RequestParam("city") String city) {
+        return ResponseEntity.ok(libraryService.getCityLibraries(city));
+    }
+
+
+    @GetMapping(value = "/{libraryUid}/books")
+    public ResponseEntity<List<Books>> getLibBooks(@PathVariable("libraryUid") UUID libraryUid,
+                                         @RequestParam("showAll") Boolean showAll) {
+
+        return ResponseEntity.ok(libraryService.getLibraryBooks(libraryUid, showAll));
+    }
+
 }

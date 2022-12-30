@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface LibraryRepository extends JpaRepository<Library, Integer> {
     List<Library> findAllByCity(String city);
-    Library findByLibrary_uid(UUID uuid);
+    Library findByLibraryUid(UUID uuid);
 }
