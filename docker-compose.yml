@@ -10,11 +10,33 @@ services:
       POSTGRES_DB: postgres
     volumes:
       - db-data:/var/lib/postgresql/data
-      - ./postgres/:/docker-entrypoint-initdb.d/
+      - ./postgres/:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
 
 # TODO добавить сервисы
+  gateway:
+    image: gateway
+    build: ./lab2/gateway/
+    ports:
+      - "8080:8080"
 
+  reservation:
+    image: reservation
+    build: ./lab2/reservation/
+    ports:
+      - "8070:8070"
+
+  library:
+    image: library
+    build: ./lab2/library/
+    ports:
+      - "8060:8060"
+
+  rating:
+    image: rating
+    build: ./lab2/rating/
+    ports:
+      - "8050:8050"
 volumes:
   db-data:
