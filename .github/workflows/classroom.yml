@@ -29,15 +29,15 @@ jobs:
       - name: Setup Maven
         uses: stCarolas/setup-maven@v4.4
         with:
-          maven-version: 3.8.6
+          maven-version: 3.8.1
       - name: Build Gateway to jar
-        run: mvn -f lab2/Gateway/pom.xml --batch-mode --update-snapshots clean package
+        run: mvn -f lab2/Gateway/pom.xml --batch-mode --update-snapshots clean package -DskipTests
       - name: Build LibraryService to jar
-        run: mvn -f lab2/LibraryService/pom.xml --batch-mode --update-snapshots clean package
+        run: mvn -f lab2/LibraryService/pom.xml --batch-mode --update-snapshots clean package -DskipTests
       - name: Build RatingService to jar
-        run: mvn -f lab2/RatingService/pom.xml --batch-mode --update-snapshots clean package
+        run: mvn -f lab2/RatingService/pom.xml --batch-mode --update-snapshots clean package -DskipTests
       - name: Build ReservationService to jar
-        run: mvn -f lab2/ReservationService/pom.xml --batch-mode --update-snapshots clean package
+        run: mvn -f lab2/ReservationService/pom.xml --batch-mode --update-snapshots clean package -DskipTests
 
       - name: Build images
         timeout-minutes: 10
