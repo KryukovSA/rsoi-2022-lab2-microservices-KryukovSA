@@ -49,7 +49,7 @@
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>Requests</artifactId>
+            <artifactId>Request1</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

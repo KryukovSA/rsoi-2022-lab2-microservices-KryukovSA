@@ -1,8 +1,8 @@
 package com.example.reservationservice.controller;
 
 
-import com.example.requests.requests.ReturnBook;
-import com.example.requests.requests.TakeBook;
+import com.example.request1.requests.ReturnBook;
+import com.example.request1.requests.TakeBook;
 import com.example.reservationservice.model.Reservation;
 import com.example.reservationservice.service.ReservationService;
 import lombok.AllArgsConstructor;
