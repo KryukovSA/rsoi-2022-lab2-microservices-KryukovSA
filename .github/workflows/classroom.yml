@@ -36,7 +36,7 @@ jobs:
       - name: Build LibraryService to jar
         run: mvn -f lab2/LibraryService/pom.xml --batch-mode --update-snapshots clean package -DskipTests
       - name: Build Requests to jar
-        run: mvn -f lab2/Requests/pom.xml --batch-mode --update-snapshots clean package -DskipTests
+        run: mvn -f lab2/Request1/pom.xml --batch-mode --update-snapshots clean package -DskipTests
       - name: Build ReservationService to jar
         run: mvn -f lab2/ReservationService/pom.xml --batch-mode --update-snapshots clean package -DskipTests
       - name: Build Gateway to jar
