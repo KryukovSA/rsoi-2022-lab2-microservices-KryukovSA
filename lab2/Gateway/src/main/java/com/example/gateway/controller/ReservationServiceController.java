@@ -1,6 +1,6 @@
 package com.example.gateway.controller;
 
-import com.example.libraryservice.model.Books;
+import com.example.libraryservice.model.*;
 import com.example.libraryservice.model.Library;
 import com.example.ratingservice.model.Rating;
 import com.example.request1.requests.ReturnBook;
