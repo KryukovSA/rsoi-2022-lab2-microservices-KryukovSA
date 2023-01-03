@@ -1,6 +1,6 @@
 package com.example.reservationservice.service;
 
-import com.example.request1.requests.*;
+import com.example.request1.requests.ReturnBook;
 import com.example.request1.requests.TakeBook;
 import com.example.reservationservice.model.Reservation;
 import com.example.reservationservice.model.Status;
