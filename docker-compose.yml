@@ -17,25 +17,25 @@ services:
 # TODO добавить сервисы
   gateway:
     image: gateway
-    build: ./lab2/gateway/
+    build: ./lab2/Gateway/
     ports:
       - "8080:8080"
 
   reservation:
     image: reservation
-    build: ./lab2/reservation/
+    build: ./lab2/ReservationService/
     ports:
       - "8070:8070"
 
   library:
     image: library
-    build: ./lab2/library/
+    build: ./lab2/LibraryService/
     ports:
       - "8060:8060"
 
   rating:
     image: rating
-    build: ./lab2/rating/
+    build: ./lab2/RatingService/
     ports:
       - "8050:8050"
 volumes:
