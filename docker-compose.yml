@@ -17,7 +17,7 @@ services:
 # TODO добавить сервисы
   gateway:
     build:
-      context: Gateway
+      context: lab2/Gateway
 #    image: gateway
 #    build: ./lab2/Gateway/
     depends_on:
@@ -29,7 +29,7 @@ services:
 
   reservation:
     build:
-      context: ReservationService
+      context: lab2/ReservationService
     depends_on:
       - postgres
 #    image: reservationservice
@@ -39,7 +39,7 @@ services:
 
   library:
     build:
-      context: LibraryService
+      context: lab2/LibraryService
     depends_on:
       - postgres
 #    image: library
@@ -49,7 +49,7 @@ services:
 
   rating:
     build:
-      context: RatingService
+      context: lab2/RatingService
     depends_on:
       - postgres
 #    image: rating
