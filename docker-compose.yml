@@ -18,6 +18,7 @@ services:
   gateway:
     build:
       context: lab2/Gateway
+    container_name: gateway
 #    image: gateway
 #    build: ./lab2/Gateway/
     depends_on:
@@ -30,6 +31,7 @@ services:
   reservation:
     build:
       context: lab2/ReservationService
+    container_name: reservation
     depends_on:
       - postgres
 #    image: reservationservice
@@ -40,6 +42,7 @@ services:
   library:
     build:
       context: lab2/LibraryService
+    container_name: library
     depends_on:
       - postgres
 #    image: library
@@ -50,6 +53,7 @@ services:
   rating:
     build:
       context: lab2/RatingService
+    container_name: rating
     depends_on:
       - postgres
 #    image: rating
