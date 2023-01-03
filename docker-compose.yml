@@ -16,26 +16,44 @@ services:
 
 # TODO добавить сервисы
   gateway:
-    image: gateway
-    build: ./lab2/Gateway/
+    build:
+      context: Gateway
+#    image: gateway
+#    build: ./lab2/Gateway/
+    depends_on:
+      - reservation
+      - library
+      - rating
     ports:
       - "8080:8080"
 
   reservation:
-    image: reservation
-    build: ./lab2/ReservationService/
+    build:
+      context: ReservationService
+    depends_on:
+      - postgres
+#    image: reservationservice
+#    build: ./lab2/ReservationService/
     ports:
       - "8070:8070"
 
   library:
-    image: library
-    build: ./lab2/LibraryService/
+    build:
+      context: LibraryService
+    depends_on:
+      - postgres
+#    image: library
+#    build: ./lab2/LibraryService/
     ports:
       - "8060:8060"
 
   rating:
-    image: rating
-    build: ./lab2/RatingService/
+    build:
+      context: RatingService
+    depends_on:
+      - postgres
+#    image: rating
+#    build: ./lab2/RatingService/
     ports:
       - "8050:8050"
 volumes:
