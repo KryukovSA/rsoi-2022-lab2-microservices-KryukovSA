@@ -24,7 +24,7 @@ jobs:
             java-version: 19
             distribution: 'adopt'
       - name: Maven Package
-        run: mvn -B clean package
+        run: mvn -B clean install package
 
 #      - name: Setup Maven
 #        uses: stCarolas/setup-maven@v4.4
