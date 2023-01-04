@@ -10,11 +10,11 @@
         <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>Request1</artifactId>
+    <artifactId>request1</artifactId>
 <!--    <packaging>pom</packaging>-->
     <version>0.0.1-SNAPSHOT</version>
-    <name>Request1</name>
-    <description>Request1</description>
+    <name>request1</name>
+    <description>request1</description>
     <properties>
         <java.version>19</java.version>
     </properties>
