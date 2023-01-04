@@ -17,7 +17,7 @@
         <module>lab2/LibraryService</module>
         <module>lab2/RatingService</module>
         <module>lab2/ReservationService</module>
-        <module>lab2/Request1</module>
+        <module>lab2/request1</module>
     </modules>
 
     <groupId>com.example</groupId>

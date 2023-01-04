@@ -50,8 +50,8 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.example.request1</groupId>
-            <artifactId>Request1</artifactId>
+            <groupId>com.example</groupId>
+            <artifactId>request1</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
