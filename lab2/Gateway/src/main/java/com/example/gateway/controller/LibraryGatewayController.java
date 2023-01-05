@@ -2,6 +2,7 @@ package com.example.gateway.controller;
 
 import com.example.libraryservice.model.Books;
 import org.apache.tomcat.jni.Library;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -41,5 +42,10 @@ public class LibraryGatewayController {
         output.put("totalElements", result.size());
         output.put("items", result);
         return ResponseEntity.ok(output);
+    }
+
+    @GetMapping("/manage/health")
+    public ResponseEntity<?> getHealth() {
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

@@ -4,6 +4,7 @@ import com.example.libraryservice.model.Books;
 import com.example.libraryservice.model.Library;
 import com.example.libraryservice.service.LibraryService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +50,11 @@ public class LibraryController {
                                          @RequestParam("showAll") Boolean showAll) {
 
         return ResponseEntity.ok(libraryService.getLibraryBooks(libraryUid, showAll));
+    }
+
+    @GetMapping("/manage/health")
+    public ResponseEntity<?> getHealth() {
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }

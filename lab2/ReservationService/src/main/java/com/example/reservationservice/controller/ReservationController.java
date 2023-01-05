@@ -6,6 +6,7 @@ import com.example.reservationservice.model.Reservation;
 import com.example.reservationservice.service.ReservationService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,5 +44,9 @@ public class ReservationController {
         return reservationService.returnBook(username, reservationUid, returnBookRequest);
     }
 
+    @GetMapping("/manage/health")
+    public ResponseEntity<?> getHealth() {
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 
 }

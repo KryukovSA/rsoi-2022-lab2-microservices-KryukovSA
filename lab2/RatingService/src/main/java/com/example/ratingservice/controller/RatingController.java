@@ -2,6 +2,7 @@ package com.example.ratingservice.controller;
 
 import com.example.ratingservice.service.RatingService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,9 @@ public class RatingController {
     public ResponseEntity<?> increaseUserRating(@RequestParam("username") String username) {
         ratingService.increaseRating(username);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/manage/health")
+    public ResponseEntity<?> getHealth() {
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

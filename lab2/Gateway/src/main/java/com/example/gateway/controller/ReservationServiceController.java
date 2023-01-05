@@ -7,6 +7,7 @@ import com.example.request1.requests.ReturnBook;
 import com.example.request1.requests.TakeBook;
 import com.example.reservationservice.model.Reservation;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -112,5 +113,9 @@ public class ReservationServiceController {
         } catch (HttpStatusCodeException e) {
             return ResponseEntity.badRequest().body(e.getResponseBodyAsString());
         }
+    }
+    @GetMapping("/manage/health")
+    public ResponseEntity<?> getHealth() {
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

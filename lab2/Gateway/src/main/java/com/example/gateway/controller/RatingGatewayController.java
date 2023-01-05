@@ -1,5 +1,6 @@
 package com.example.gateway.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +43,11 @@ public class RatingGatewayController {
         String url = ratingUrl + "/increase" + "?username=" + username;
         restTemplate.postForLocation(url, null);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/manage/health")
+    public ResponseEntity<?> getHealth() {
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }
