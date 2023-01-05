@@ -43,5 +43,5 @@ public class ReservationController {
                                       @RequestBody ReturnBook returnBookRequest) {
         return reservationService.returnBook(username, reservationUid, returnBookRequest);
     }
-    
+
 }
