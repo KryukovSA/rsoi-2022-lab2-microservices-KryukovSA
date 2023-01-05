@@ -52,9 +52,5 @@ public class LibraryController {
         return ResponseEntity.ok(libraryService.getLibraryBooks(libraryUid, showAll));
     }
 
-    @GetMapping("/manage/health")
-    public ResponseEntity<?> getHealth() {
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
 
 }

@@ -45,9 +45,4 @@ public class RatingGatewayController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/manage/health")
-    public ResponseEntity<?> getHealth() {
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
-
 }

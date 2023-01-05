@@ -44,8 +44,4 @@ public class LibraryGatewayController {
         return ResponseEntity.ok(output);
     }
 
-    @GetMapping("/manage/health")
-    public ResponseEntity<?> getHealth() {
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
 }

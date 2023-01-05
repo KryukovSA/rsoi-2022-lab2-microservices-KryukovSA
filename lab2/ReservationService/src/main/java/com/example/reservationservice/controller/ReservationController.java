@@ -43,10 +43,5 @@ public class ReservationController {
                                       @RequestBody ReturnBook returnBookRequest) {
         return reservationService.returnBook(username, reservationUid, returnBookRequest);
     }
-
-    @GetMapping("/manage/health")
-    public ResponseEntity<?> getHealth() {
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
-
+    
 }

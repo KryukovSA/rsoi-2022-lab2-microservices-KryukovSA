@@ -114,8 +114,5 @@ public class ReservationServiceController {
             return ResponseEntity.badRequest().body(e.getResponseBodyAsString());
         }
     }
-    @GetMapping("/manage/health")
-    public ResponseEntity<?> getHealth() {
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
+
 }

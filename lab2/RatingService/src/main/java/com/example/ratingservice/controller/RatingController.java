@@ -30,8 +30,5 @@ public class RatingController {
         ratingService.increaseRating(username);
         return ResponseEntity.noContent().build();
     }
-    @GetMapping("/manage/health")
-    public ResponseEntity<?> getHealth() {
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
+
 }
