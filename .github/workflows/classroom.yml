@@ -26,22 +26,6 @@ jobs:
       - name: Maven Package
         run: mvn -B clean package
 
-#      - name: Setup Maven
-#        uses: stCarolas/setup-maven@v4.4
-#        with:
-#          maven-version: 3.8.1
-#
-#      - name: Build RatingService to jar
-#        run: mvn -f lab2/RatingService/pom.xml --batch-mode --update-snapshots clean package -DskipTests
-#      - name: Build LibraryService to jar
-#        run: mvn -f lab2/LibraryService/pom.xml --batch-mode --update-snapshots clean package -DskipTests
-#      - name: Build Requests to jar
-#        run: mvn -f lab2/Request1/pom.xml --batch-mode --update-snapshots clean package -DskipTests
-#      - name: Build ReservationService to jar
-#        run: mvn -f lab2/ReservationService/pom.xml --batch-mode --update-snapshots clean package -DskipTests
-#      - name: Build Gateway to jar
-#        run: mvn -f lab2/Gateway/pom.xml --batch-mode --update-snapshots clean package -DskipTests
-
       - name: Build images
         timeout-minutes: 10
         run: docker compose build
@@ -66,6 +50,13 @@ jobs:
           environment: v4/postman/environment.json
           delayRequest: 100
           reporters: '[ "cli" ]'
+
+      - name: Dump docker logs on failure
+        if: failure()
+        uses: jwalton/gh-docker-logs@v2
+        with:
+          images: 'library/postgres:13,gateway,reservation,library,rating'
+          tail: '250'
 
       - uses: education/autograding@v1
         id: autograder
