@@ -15,7 +15,7 @@ import java.util.UUID;
 @RequestMapping("/api/v1/libraries")
 public class LibraryGatewayController {
 
-    public static final String libraryUrl = "http://localhost:8060/api/v1/libraries";
+    public static final String libraryUrl = "http://library:8060/api/v1/libraries";
 
     @GetMapping()
     public ResponseEntity<HashMap> getLibsInCity(@RequestParam("city") String city) {

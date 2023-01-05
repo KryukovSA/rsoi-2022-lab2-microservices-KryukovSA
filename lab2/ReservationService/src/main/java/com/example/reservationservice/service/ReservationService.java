@@ -36,9 +36,9 @@ public class ReservationService {
         if(!returnBookRequest.getCondition().equals("EXCELLENT")) badCondition = true;
         String url = "";
         if(expired || badCondition) {
-            url = "http://localhost:8080/api/v1/rating" + "/decrease" + "?username=" + username + "&expired=" + expired + "&badCondition=" + badCondition;
+            url = "http://gateway:8080/api/v1/rating" + "/decrease" + "?username=" + username + "&expired=" + expired + "&badCondition=" + badCondition;
         } else {
-            url = "http://localhost:8080/api/v1/rating" + "/increase" + "?username=" + username;
+            url = "http://gateway:8080/api/v1/rating" + "/increase" + "?username=" + username;
         }
         restTemplate.postForLocation(url, null);
         //ToDo increase available_count

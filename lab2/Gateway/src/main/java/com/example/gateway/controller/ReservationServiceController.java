@@ -21,7 +21,7 @@ import java.util.*;
 @Controller
 @RequestMapping("/api/v1/reservations")
 public class ReservationServiceController {
-    public static final String reservation_url = "http://localhost:8070/api/v1/reservations";
+    public static final String reservation_url = "http://reservation:8070/api/v1/reservations";
     Reservation mainReservation;
     @PostMapping
     public ResponseEntity<HashMap> takeBook(@RequestHeader("X-User-Name") String username,

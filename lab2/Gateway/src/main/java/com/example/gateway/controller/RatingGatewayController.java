@@ -15,7 +15,7 @@ public class RatingGatewayController {
 //    @Value("${services.ports.rating}")
 //    private String ratingPort;
 
-    public static final String ratingUrl = "http://localhost:8050/api/v1/rating";
+    public static final String ratingUrl = "http://rating:8050/api/v1/rating";
 
     @GetMapping
     public ResponseEntity<HashMap> getUserRating(@RequestHeader("X-User-Name") String username) {
