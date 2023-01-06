@@ -10,7 +10,6 @@ CREATE TABLE reservation
     start_date      TIMESTAMP   NOT NULL,
     till_date       TIMESTAMP   NOT NULL
 );
-GRANT ALL PRIVILEGES ON TABLE reservation TO program;
 
 CREATE TABLE library
 (
@@ -39,9 +38,7 @@ CREATE TABLE library_books
     library_id      INT REFERENCES library (id),
     available_count INT NOT NULL
 );
-GRANT ALL PRIVILEGES ON TABLE library TO program;
-GRANT ALL PRIVILEGES ON TABLE books TO program;
-GRANT ALL PRIVILEGES ON TABLE library_books TO program;
+
 
 CREATE TABLE rating
 (
@@ -50,7 +47,7 @@ CREATE TABLE rating
     stars    INT         NOT NULL
         CHECK (stars BETWEEN 0 AND 100)
 );
-GRANT ALL PRIVILEGES ON TABLE rating TO program;
+
 
 insert into library (id, library_uid, name, city, address)
 values (1, '83575e12-7ce0-48ee-9931-51919ff3c9ee',
