@@ -30,21 +30,21 @@ public class ReservationServiceController {
         HttpEntity<TakeBook> request = new HttpEntity<>(takeBookRequest, null);
         Reservation result = restTemplate.postForObject(reservation_url + "?username=" + username, request, Reservation.class);
         mainReservation = result;
-        Books book = restTemplate.getForObject("http://localhost:8060/api/v1/libraries/getBook" + "?libraryUid=" + result.getLibraryUid() + "&bookUid=" + result.getBookUid(), Books.class);
+        Books book = restTemplate.getForObject("http://library:8060/api/v1/libraries/getBook" + "?libraryUid=" + result.getLibraryUid() + "&bookUid=" + result.getBookUid(), Books.class);
         HashMap<String, Object> book1 = new HashMap<>();
         book1.put("bookUid", book.getBookUid());
         book1.put("name", book.getName());
         book1.put("author", book.getAuthor());
         book1.put("genre", book.getGenre());
 
-        Library lib = restTemplate.getForObject("http://localhost:8060/api/v1/libraries/getLib" + "?libraryUid=" + result.getLibraryUid(), Library.class);
+        Library lib = restTemplate.getForObject("http://library:8060/api/v1/libraries/getLib" + "?libraryUid=" + result.getLibraryUid(), Library.class);
         HashMap<String, Object> lib1 = new HashMap<>();
         lib1.put("libraryUid", lib.getLibraryUid());
         lib1.put("name", lib.getName());
         lib1.put("address", lib.getAddress());
         lib1.put("city", lib.getCity());
 
-        Integer rating = restTemplate.getForObject("http://localhost:8050/api/v1/rating" + "?username=" + result.getUsername(), Integer.class);
+        Integer rating = restTemplate.getForObject("http://rating:8050/api/v1/rating" + "?username=" + result.getUsername(), Integer.class);
         HashMap<String, Integer> raiting = new HashMap<>();
         raiting.put("stars", rating);
 
@@ -72,14 +72,14 @@ public class ReservationServiceController {
         List<HashMap<String, Object>> answer = new ArrayList<>();
 
 
-        Books book = restTemplate.getForObject("http://localhost:8060/api/v1/libraries/getBook" + "?libraryUid=" + mainReservation.getLibraryUid() + "&bookUid=" + mainReservation.getBookUid(), Books.class);//result.get(0)
+        Books book = restTemplate.getForObject("http://library:8060/api/v1/libraries/getBook" + "?libraryUid=" + mainReservation.getLibraryUid() + "&bookUid=" + mainReservation.getBookUid(), Books.class);//result.get(0)
         HashMap<String, Object> book1 = new HashMap<>();
         book1.put("bookUid", book.getBookUid());
         book1.put("name", book.getName());
         book1.put("author", book.getAuthor());
         book1.put("genre", book.getGenre());
 
-        Library lib = restTemplate.getForObject("http://localhost:8060/api/v1/libraries/getLib" + "?libraryUid=" + mainReservation.getLibraryUid(), Library.class);
+        Library lib = restTemplate.getForObject("http://library:8060/api/v1/libraries/getLib" + "?libraryUid=" + mainReservation.getLibraryUid(), Library.class);
         HashMap<String, Object> lib1 = new HashMap<>();
         lib1.put("libraryUid", lib.getLibraryUid());
         lib1.put("name", lib.getName());
