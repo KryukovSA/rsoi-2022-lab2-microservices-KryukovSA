@@ -38,10 +38,6 @@ jobs:
         env:
           WAIT_PORTS: 8080,8070,8060,8050
 
-      - name: Sleep for 30 seconds
-        run: sleep 30s
-        shell: bash
-
       - name: Run API Tests
         uses: matt-ball/newman-action@master
         with:

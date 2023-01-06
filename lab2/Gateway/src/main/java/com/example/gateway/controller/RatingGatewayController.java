@@ -12,8 +12,6 @@ import java.util.HashMap;
 @RequestMapping("/api/v1/rating")
 public class RatingGatewayController {
 
-//    @Value("${services.ports.rating}")
-//    private String ratingPort;
 
     public static final String ratingUrl = "http://rating:8050/api/v1/rating";
 
@@ -38,7 +36,7 @@ public class RatingGatewayController {
     }
 
     @PostMapping("/increase")
-    public ResponseEntity<?> decreaseUserRating(@RequestParam("username") String username) {
+    public ResponseEntity<?> increaseUserRating(@RequestParam("username") String username) {
         RestTemplate restTemplate = new RestTemplate();
         String url = ratingUrl + "/increase" + "?username=" + username;
         restTemplate.postForLocation(url, null);
