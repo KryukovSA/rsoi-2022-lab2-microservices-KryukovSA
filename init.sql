@@ -1,5 +1,3 @@
-
-\c reservations
 CREATE TABLE reservation
 (
     id              SERIAL PRIMARY KEY,
@@ -14,7 +12,6 @@ CREATE TABLE reservation
 );
 GRANT ALL PRIVILEGES ON TABLE reservation TO program;
 
-\c libraries
 CREATE TABLE library
 (
     id          SERIAL PRIMARY KEY,
@@ -46,7 +43,6 @@ GRANT ALL PRIVILEGES ON TABLE library TO program;
 GRANT ALL PRIVILEGES ON TABLE books TO program;
 GRANT ALL PRIVILEGES ON TABLE library_books TO program;
 
-\c ratings
 CREATE TABLE rating
 (
     id       SERIAL PRIMARY KEY,
@@ -72,6 +68,6 @@ values (1, 'f7cdc58f-2caf-4b15-9727-f89dcc629b27',
 insert into library_books (book_id, library_id, available_count)
 values (1, 1, 1);
 
-\c ratings
+
 insert into rating (id, username, stars)
 values (1, 'Test Max', 75)
